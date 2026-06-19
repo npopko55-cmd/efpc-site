@@ -1,0 +1,13 @@
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Единый ФПЦ">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="52" x2="52" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B8893D"/>
+      <stop offset="0.55" stop-color="#D9B779"/>
+      <stop offset="1" stop-color="#C9A45B"/>
+    </linearGradient>
+  </defs>
+  <!-- three ascending strokes: growth of capital -->
+  <path d="M6 40 L14 12 L20 12 L12 40 Z" fill="url(#gold)"/>
+  <path d="M18 40 L26 12 L32 12 L24 40 Z" fill="url(#gold)" opacity="0.78"/>
+  <path d="M30 40 L38 12 L44 12 L36 40 Z" fill="url(#gold)" opacity="0.56"/>
+</svg>

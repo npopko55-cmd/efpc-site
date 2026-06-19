@@ -1,0 +1,14 @@
+{
+  "name": "Единый ФПЦ — финансово-правовой центр",
+  "short_name": "Единый ФПЦ",
+  "description": "Аудит, структурирование групп, сделки M&A и подготовка к IPO для крупного бизнеса.",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1F3A",
+  "theme_color": "#0B1F3A",
+  "icons": [
+    { "src": "assets/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
