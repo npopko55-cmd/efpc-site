@@ -660,6 +660,53 @@ html.js .hero-visual { animation: heroVisualIn .9s var(--ease-out-expo) both .15
 .process { content-visibility: auto; contain-intrinsic-size: auto 420px; }
 .docs { content-visibility: auto; contain-intrinsic-size: auto 420px; }
 
+/* ---------- Акцентная цитата: защита прав собственников ---------- */
+.ownerquote {
+  background: linear-gradient(135deg, var(--navy-900), var(--navy-700));
+  color: var(--ivory);
+  padding: var(--section) 0;
+}
+.ownerquote .oq {
+  margin: 0 auto;
+  max-width: 62ch;
+  text-align: center;
+  position: relative;
+  padding-top: 52px;
+}
+.ownerquote .oq::before {
+  content: "\201C";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--serif);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--gold);
+}
+.ownerquote blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 1rem + 1.45vw, 2rem);
+  line-height: 1.42;
+  font-weight: 600;
+  letter-spacing: var(--track-display);
+}
+.ownerquote blockquote em {
+  display: block;
+  margin-top: 0.45em;
+  font-style: normal;
+  color: var(--gold-light);
+}
+.ownerquote figcaption {
+  margin-top: var(--space-lg);
+  font-family: var(--sans);
+  font-size: var(--t-caption);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
 /* ---------- Windows High Contrast / forced colors ---------- */
 @media (forced-colors: active) {
   .btn { border: 1px solid; }
