@@ -137,9 +137,12 @@
     });
   });
 
-  /* ---------- Lead form (Web3Forms) ---------- */
+  /* ---------- Lead form (Яндекс.Облако → SMTP Яндекс 360) ---------- */
   const form = document.getElementById("lead-form");
   if (form) {
+    // URL функции Яндекс.Облака, принимающей заявки (шлёт письмо на ediniyfpc@efpts.ru).
+    // После деплоя вписать адрес вида https://functions.yandexcloud.net/<function-id> (см. serverless/README.md)
+    const ENDPOINT = "https://functions.yandexcloud.net/REPLACE_WITH_FUNCTION_ID";
     const status = form.querySelector(".form-status");
     const btn = form.querySelector('button[type="submit"]');
     const btnText = btn ? btn.textContent : "";
@@ -196,14 +199,15 @@
 
       if (!validate()) return;
 
-      const data = new FormData(form);
-      const key = data.get("access_key");
+      const fd = new FormData(form);
+      const payload = {};
+      fd.forEach((v, k) => { payload[k] = v; });
 
-      // Если ключ Web3Forms ещё не подставлен — не отправляем «в никуда».
-      if (!key || key.includes("REPLACE")) {
+      // Пока не подставлен URL функции приёма заявок — не отправляем «в никуда».
+      if (!ENDPOINT || ENDPOINT.includes("REPLACE")) {
         status.className = "form-status err";
         status.textContent =
-          "Форма ещё не подключена к почте. Нужно вставить ключ Web3Forms (см. README). Пока напишите на ediniyfpc@efpts.ru или позвоните +7 (499) 130-99-75.";
+          "Форма ещё не подключена. Нужно указать адрес функции приёма заявок (см. serverless/README.md). Пока напишите на ediniyfpc@efpts.ru или позвоните +7 (499) 130-99-75.";
         return;
       }
 
@@ -211,13 +215,13 @@
       btn.textContent = "Отправляем…";
 
       try {
-        const res = await fetch("https://api.web3forms.com/submit", {
+        const res = await fetch(ENDPOINT, {
           method: "POST",
-          headers: { Accept: "application/json" },
-          body: data,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
         });
-        const json = await res.json();
-        if (json.success) {
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && json.success) {
           form.reset();
           const card = form.closest(".form-card");
           const success = card && card.querySelector(".form-success");

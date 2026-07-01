@@ -459,11 +459,8 @@
 
         <h3 class="form-head">Получить консультацию</h3>
         <p class="fc-sub form-head">Заполните форму, остальное за нами.</p>
-        <form id="lead-form" action="https://api.web3forms.com/submit" method="POST">
-          <!-- Web3Forms: вставьте ключ для отправки на ediniyfpc@efpts.ru (см. README.md) -->
-          <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY" />
-          <input type="hidden" name="subject" value="Новая заявка с сайта Единый ФПЦ" />
-          <input type="hidden" name="from_name" value="Сайт Единый ФПЦ" />
+        <form id="lead-form" method="POST" novalidate>
+          <!-- Заявки принимает функция Яндекс.Облака (SMTP → ediniyfpc@efpts.ru). URL функции — в js/main.js (ENDPOINT). См. serverless/README.md -->
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div class="form-status"></div>
